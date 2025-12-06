@@ -72,7 +72,7 @@ export const useDdropdown = ({controlled=false, open=false, setIsOpen, setUserSe
         
         const handleOutsideClick = (e : MouseEvent) => {
             if(menuRef.current && !menuRef.current.contains(e.target as Node)){
-                setIsOpen!(prev => !prev);
+                setIsOpen && setIsOpen((prev : boolean) => !prev);
                 setIsOpenUC(prev => !prev);
             }
         }
