@@ -1,23 +1,23 @@
-import { useState } from "react"
-import Ddropdown from "../components/Ddropdown/Ddropdown"
+import Modal from "../components/Modal/Modal";
+import { useModal } from "../components/Modal/useModal";
+import ModalContent from "../components/Modal/ModalContent";
 
 
 const Starter = () => {
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedVals, setSelectedVals] = useState<string[]>([]);
-    
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
+  
+  const {dialogRef, toggle, isOpenInternal, isClosable} = useModal({isClosable:true})
+
   return (
     <div>
-        <Ddropdown 
-        controlled={true} 
-        isMulti={true} 
-        open={isOpen} 
-        setIsOpen={setIsOpen} 
-        value={selectedVals} 
-        setUserSelectedValue={setSelectedVals}
-        />
-      <p>Controlled Sync: {selectedVals}</p>
+    {/* triggers the modal */}
+    <div onClick={toggle}>
+      Show me Modal
+    </div>
+    <Modal dialogRef={dialogRef} isOpenInternal={isOpenInternal} toggle={toggle} isClosable={isClosable}>
+      <ModalContent isClosable={isClosable} toggle={toggle}/>
+    </Modal>
     </div>
   )
 }
