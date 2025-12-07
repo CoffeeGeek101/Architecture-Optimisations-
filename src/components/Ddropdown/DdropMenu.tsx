@@ -1,6 +1,6 @@
 // component to trigger selects and render the dropdown items
 
-import { type FC } from 'react'
+import { useCallback, type FC } from 'react'
 import { options } from '../../utils/DropdownOptions'
 import DdropItems from './DdropItems'
 import type { DropdownHookFunctions } from './useDdropdonw'
@@ -15,14 +15,14 @@ const DdropMenu : FC<DropdownHookFunctions> = ({...props}) => {
         return null;
     }
 
-    const handleDropSelect = (e : React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleDropSelect = useCallback((e : React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const selectValue = ((e.target as HTMLDivElement).closest("[data-value]") as HTMLElement).dataset.value;
         props.selectDrops!(selectValue!)
-    }
+    },[])
 
-    const isSelected = (option : string, selected : string[]) : boolean => {
-        return selected.includes(option)
-    }
+    const isSelected = useCallback((option : string, selected : string[]) : boolean => {
+        return selected.includes(option) //can be optimised to O(1) using a set
+    },[])
 
     return (
         <div onClick={(e) => handleDropSelect(e)} ref={props.menuRef}>
