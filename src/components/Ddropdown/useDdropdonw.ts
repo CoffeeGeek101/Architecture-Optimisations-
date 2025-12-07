@@ -1,6 +1,6 @@
 // We will add all the logic here as a custom hook.
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // Specs :
 // - Controlled / UnControlled switch - done
@@ -37,32 +37,32 @@ export const useDdropdown = ({controlled=false, open=false, setIsOpen, setUserSe
     const menuRef = useRef<HTMLDivElement|null>(null);
 
     
-    const toggler = () => {
+    const toggler = useCallback(() => {
         if(controlled){
             setIsOpen!(prev => !prev);
             setIsOpenUC(prev => !prev);
         }else{
             setIsOpenUC(prev => !prev);
         }
-    }
+    },[controlled])
 
-    const setSelectedValue_internal = (setterFn : React.Dispatch<React.SetStateAction<string[] | []>>, item : string) => {
+    const setSelectedValue_internal = useCallback((setterFn : React.Dispatch<React.SetStateAction<string[] | []>>, item : string) => {
         if(isMulti){
             // can be optimised by sorting and binary search here O(log n)
             setterFn(prev => [...prev].includes(item) ? prev.filter((val) => val != item) : [...prev, item]);
         }else{
-            setterFn([item]);
+            setterFn(_ => [item]);
         }
-    } 
+    }, [isMulti])
 
-    const selectDrops = (item : string) => {
+    const selectDrops = useCallback((item : string) => {
         if(controlled){
             setSelectedValue_internal(setUserSelectedValue!, item)
             setSelectedValue_internal(setValuesUC, item)
         }else{
             setSelectedValue_internal(setValuesUC, item)
         }
-    }
+    },[controlled])
 
     useEffect(()=> {
 
