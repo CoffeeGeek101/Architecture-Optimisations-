@@ -9,7 +9,7 @@ interface DdropItemsI {
 }
 
 const DdropItems : FC<DdropItemsI> = React.memo(({lable,value,isSelected}) => {
-    console.log("rendering", lable)
+    // console.log("rendering", lable)
   return (
     <div data-value={value}>
        {isSelected ? <span>😀 {lable}</span> : <span>{lable}</span>}

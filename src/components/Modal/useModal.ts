@@ -36,7 +36,7 @@ export const useModal = ({isClosable=true, isOpen=false, isSetOpen} : ModalHookI
     }
 
     useEffect(()=>{
-        console.log(dialogRef.current)
+        // console.log(dialogRef.current)
         if(!isOpenInternal){
             document.body.style.overflow = "";
             return;
