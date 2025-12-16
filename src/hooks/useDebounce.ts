@@ -10,7 +10,8 @@ export const useDebounce = (fn : (...args : any[])=>void, delay : number) => {
     fnRef.current = fn;
 
     // useCallback will maintain the function identity from the initial render, keeping the closure stale here.
-    // Here, useCallback is not required, as it is not changing after initial run.
+    // useCallback is used to keep debouncedFn referentially stable.
+    // Correctness does not depend on it because refs handle mutable state.
     const debouncedFn = useCallback((...args: any[]) => {
         if(timerRef.current){
             clearTimeout(timerRef.current);
