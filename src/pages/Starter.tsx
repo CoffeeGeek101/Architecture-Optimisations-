@@ -6,6 +6,8 @@ import Tabs from "../components/Tab/Tabs";
 import { tabConfigs } from "../utils/Tabs1Config";
 import Accordian from "../components/Accordian/Accordian";
 import { AccordianConfig } from "../utils/Accordian1Config";
+import Select from "../components/Select/Select";
+import { SelectOptions } from "../utils/SelectOptions";
 
 
 const Starter = () => {
@@ -31,6 +33,9 @@ const Starter = () => {
 
     {/* ACCORDIAN */}
     <Accordian config={AccordianConfig} isMulti={true}/>
+
+    {/* SELECT */}
+    <Select options={SelectOptions} isMulti={true}/>
     </div>
   )
 }
