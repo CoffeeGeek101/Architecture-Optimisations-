@@ -8,11 +8,16 @@ import Accordian from "../components/Accordian/Accordian";
 import { AccordianConfig } from "../utils/Accordian1Config";
 import Select from "../components/Select/Select";
 import { SelectOptions } from "../utils/SelectOptions";
+import { Switch } from "../components/Switch";
+import { useState } from "react";
+
 
 
 const Starter = () => {
   
   const {dialogRef, toggle, isOpenInternal, isClosable} = useModal({isClosable:true});
+  const [isSwitchOnC, setIsSwitchedOn] = useState<boolean>(false);
+  
   return (
     <div>
     {/* triggers the modal */}
@@ -36,6 +41,13 @@ const Starter = () => {
 
     {/* SELECT */}
     <Select options={SelectOptions} isMulti={true}/>
+
+    {/* SWITCH (compound component arch) */}
+    <Switch.Root isSwitchOn={isSwitchOnC} setIsSwitchOn={setIsSwitchedOn}>
+      <Switch.Button>
+        <Switch.Thumb/>
+      </Switch.Button>
+    </Switch.Root>
     </div>
   )
 }
