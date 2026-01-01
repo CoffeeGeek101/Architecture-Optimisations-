@@ -12,6 +12,7 @@ import { Switch } from "../components/Switch";
 import { useState } from "react";
 import MenuBar from "../components/Menubar/MenuBar";
 import Menu from "../components/Menubar/Menu";
+import ScrollClient from "../components/InifiniteScroll/ScrollClient";
 
 
 
@@ -21,8 +22,9 @@ const Starter = () => {
   const [isSwitchOnC, setIsSwitchedOn] = useState<boolean>(false);
   
   return (
-    <div>
-    {/* triggers the modal */}
+    <div className="flex items-start gap-5">
+      <div>
+            {/* triggers the modal */}
     <div onClick={toggle}>
       Show me Modal
     </div>
@@ -57,6 +59,12 @@ const Starter = () => {
       <Menu>Hello2</Menu>
       <Menu>Hello3</Menu>
     </MenuBar>
+      </div>
+
+      <div>
+        <ScrollClient/>
+      </div>
+
     </div>
   )
 }
