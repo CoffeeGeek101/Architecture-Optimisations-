@@ -10,6 +10,8 @@ import Select from "../components/Select/Select";
 import { SelectOptions } from "../utils/SelectOptions";
 import { Switch } from "../components/Switch";
 import { useState } from "react";
+import MenuBar from "../components/Menubar/MenuBar";
+import Menu from "../components/Menubar/Menu";
 
 
 
@@ -48,6 +50,13 @@ const Starter = () => {
         <Switch.Thumb/>
       </Switch.Button>
     </Switch.Root>
+
+    {/* MENUBAR */}
+    <MenuBar>
+      <Menu>Hello</Menu>
+      <Menu>Hello2</Menu>
+      <Menu>Hello3</Menu>
+    </MenuBar>
     </div>
   )
 }
