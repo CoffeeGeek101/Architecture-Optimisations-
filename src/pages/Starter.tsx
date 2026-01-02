@@ -13,6 +13,7 @@ import { useState } from "react";
 import MenuBar from "../components/Menubar/MenuBar";
 import Menu from "../components/Menubar/Menu";
 import ScrollClient from "../components/InifiniteScroll/ScrollClient";
+import VirtualiseHolder from "../components/Virtualisation/VirtualiseHolder";
 
 
 
@@ -20,7 +21,8 @@ const Starter = () => {
   
   const {dialogRef, toggle, isOpenInternal, isClosable} = useModal({isClosable:true});
   const [isSwitchOnC, setIsSwitchedOn] = useState<boolean>(false);
-  
+  const data = Array.from({length : 1000}).fill(0).map((_, index) => ({id : index}));
+
   return (
     <div className="flex items-start gap-5">
       <div>
@@ -64,7 +66,7 @@ const Starter = () => {
       <div>
         <ScrollClient/>
       </div>
-
+      <VirtualiseHolder data={data}/>
     </div>
   )
 }
