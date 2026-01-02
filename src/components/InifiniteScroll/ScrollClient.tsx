@@ -12,10 +12,8 @@ const ScrollClient = () => {
     <div 
     ref={viewportRef}
     className='flex flex-row w-60 h-96 bg-amber-200 overflow-y-scroll'
-    // onScroll={handleScroll}
     >
         <ScrollableContent data={data} ref={sentinelRef}/>
-        {/* <div ref={sentinelRef} className='h-1'>hello</div> */}
     </div>
   )
 }
